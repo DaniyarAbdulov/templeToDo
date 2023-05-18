@@ -22,6 +22,7 @@ const EditDialog: FC<TProps> = ({isOpen, isAsync = false, setOpen, todo}) => {
 	const dispatch = useAppDispatch()
 	const [title, setTitle] = useState(todo.title)
 	const handleChange = () => {
+		dispatch(editTodo({id:todo.id, title:title}))
 		setOpen(false)
 	}
 	const handleClose = () => {

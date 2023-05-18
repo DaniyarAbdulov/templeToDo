@@ -21,9 +21,14 @@ const syncSlice = createSlice({
 		removeToDo: (state, action: PayloadAction<number>) => ({
 			todos: state.todos.filter((todo)=> todo.id !== action.payload)
 		}),
-		editTodo: (state, action: PayloadAction<{id: number; title: string}>) => ({
-			...state
-		})
+		editTodo: (state, action: PayloadAction<{id: number; title: string}>) => {
+			const {id,title} = action.payload
+			const index = state.todos.findIndex((todo) => todo.id === id)
+			if (index!== -1){
+				state.todos[index].title = title
+			}
+			return state
+		}
 	}
 })
 
