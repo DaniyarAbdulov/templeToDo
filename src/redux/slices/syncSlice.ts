@@ -19,7 +19,7 @@ const syncSlice = createSlice({
 			todos: state.todos.concat(action.payload)
 		}),
 		removeToDo: (state, action: PayloadAction<number>) => ({
-			...state
+			todos: state.todos.filter((todo)=> todo.id !== action.payload)
 		}),
 		editTodo: (state, action: PayloadAction<{id: number; title: string}>) => ({
 			...state
