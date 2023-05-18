@@ -7,48 +7,57 @@ import {addToDo} from '../redux/slices/syncSlice'
 import TodoItem from './todoItem'
 
 const Sync: FC = () => {
-	const dispatch = useAppDispatch()
-	const {todos} = useAppSelector(state => state.syncReducer)
-	const [title, setTitle] = useState('')
-	const handleAdd = () => {
-		setTitle('')
-	}
+    const dispatch = useAppDispatch()
+    const {todos} = useAppSelector(state => state.syncReducer)
+    const [title, setTitle] = useState('')
+    const handleAdd = () => {
+        // add title to todos
+        const todo: IToDo = {
+            id: Date.now(),
+            title: title,
+            completed: false,
+        }
+		dispatch(addToDo(todo))
+        setTitle('')
+    }
 
-	return (
-		<div style={styles.container}>
-			<h3 style={{textAlign: 'center'}}>Sync ToDo's</h3>
-			<div style={styles.row}>
-				<TextField
-					value={title}
-					sx={{flex: 1}}
-					onChange={({target}) => setTitle(target.value)}
-					label='Название todo'
-					variant='outlined'
-				/>
-				<Button
-					variant='contained'
-					onClick={handleAdd}
-				>
-					Добавить
-				</Button>
-			</div>
-			{todos.length ? (
-				<div style={styles.todosWrapper}>
-					{todos.map(todo => (
-						<TodoItem todo={todo} />
-					))}
-				</div>
-			) : (
-				<></>
-			)}
-		</div>
-	)
+
+
+    return (
+        <div style={styles.container}>
+            <h3 style={{textAlign: 'center'}}>Sync ToDo's</h3>
+            <div style={styles.row}>
+                <TextField
+                    value={title}
+                    sx={{flex: 1}}
+                    onChange={({target}) => setTitle(target.value)}
+                    label='Название todo'
+                    variant='outlined'
+                />
+                <Button
+                    variant='contained'
+                    onClick={handleAdd}
+                >
+                    Добавить
+                </Button>
+            </div>
+            {todos.length ? (
+                <div style={styles.todosWrapper}>
+                    {todos.map(todo => (
+                        <TodoItem todo={todo}/>
+                    ))}
+                </div>
+            ) : (
+                <></>
+            )}
+        </div>
+    )
 }
 
-const styles: {[key: string]: CSSProperties} = {
-	container: {},
-	row: {},
-	todosWrapper: {}
+const styles: { [key: string]: CSSProperties } = {
+    container: {},
+    row: {},
+    todosWrapper: {}
 }
 
 export default Sync

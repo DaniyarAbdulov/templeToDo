@@ -16,7 +16,7 @@ const syncSlice = createSlice({
 	initialState,
 	reducers: {
 		addToDo: (state, action: PayloadAction<IToDo>) => ({
-			...state
+			todos: state.todos.concat(action.payload)
 		}),
 		removeToDo: (state, action: PayloadAction<number>) => ({
 			...state
