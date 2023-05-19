@@ -16,7 +16,7 @@ type TProps = {
 const TodoItem: FC<TProps> = ({todo, isAsync = false}) => {
 	const dispatch = useAppDispatch()
 	const handleDelete = () => {
-		dispatch(removeToDo(todo.id))
+		dispatch(isAsync ? removeTodoAsync(todo.id): removeToDo(todo.id))
 	}
 	const [openDialog, setOpenDialog] = useState(false)
 

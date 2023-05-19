@@ -8,7 +8,7 @@ import TodoItem from './todoItem'
 const Async: FC = () => {
 	const dispatch = useAppDispatch()
 	const {todos, loading} = useAppSelector(state => state.asyncReducer)
-	const handleRefresh = () => {}
+	const handleRefresh = () => {dispatch(fetchTodos())}
 
 	return (
 		<div style={styles.container}>
