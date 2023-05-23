@@ -55,9 +55,19 @@ const Sync: FC = () => {
 }
 
 const styles: { [key: string]: CSSProperties } = {
-    container: {},
-    row: {},
-    todosWrapper: {}
+    container: {
+        flex:1,
+        paddingRight:5
+    },
+    row: {display:"flex"},
+    todosWrapper: {
+        border:"1px solid grey",
+        padding: "5px",
+        borderRadius:"5px",
+        overflow:"auto",
+        marginTop:15,
+        height:"40vh",
+    }
 }
 
 export default Sync

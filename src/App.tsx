@@ -17,8 +17,16 @@ const App: FC = () => {
 }
 
 const styles: {[key: string]: CSSProperties} = {
-	container: {},
-	wrapper: {}
+	container: {
+		alignItems:"center", 
+		display:"flex",
+		flexDirection:"column"
+	},
+	wrapper: {
+		display:"flex",
+		width:"100%",
+		justifyContent:"space-between"
+	}
 }
 
 export default App

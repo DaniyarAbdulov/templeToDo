@@ -39,8 +39,18 @@ const Async: FC = () => {
 }
 
 const styles: {[key: string]: CSSProperties} = {
-	container: {},
-	todosWrapper: {}
+	container: {
+		flex:1,
+        paddingLeft:5
+	},
+	todosWrapper: {
+        border:"1px solid grey",
+        padding: "5px",
+        borderRadius:"5px",
+        overflow:"auto",
+        marginTop:15,
+		height:"40vh"
+    }
 }
 
 export default Async
